@@ -35,15 +35,15 @@ const client = new MongoClient(uri, { useUnifiedTopology: true });
 //         console.log(data);
 //     });
 
-async function run() {
-    await client.connect();
+// async function run() {
+//     await client.connect();
 
-    const db = client.db('catagram');
-    const catsCollection = db.collection('cats');
+//     const db = client.db('catagram');
+//     const catsCollection = db.collection('cats');
 
-    let firstCat = await catsCollection.findOne({});
+//     let firstCat = await catsCollection.findOne({});
 
-    // console.log(firstCat)
-}
+//     console.log(firstCat)
+// }
 
-run();
+// run();
