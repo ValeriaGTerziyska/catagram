@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Person = require("./modules/Person");
 
 const uri = 'mongodb://localhost:27017/mongotest';
 
@@ -10,14 +11,6 @@ db.once('open', () => {
     console.log('Connected to databse...');
 });
 
-const personSchema = new mongoose.Schema({
-    name: String,
-    age: Number,
-});
-
-const Person = mongoose.model("Person", personSchema);
-
-
 let person = new Person({ name: 'Petkan', age: 25 });
 // person.save((err, result) => {
 //     if(err) return console.log(err);
@@ -25,8 +18,19 @@ let person = new Person({ name: 'Petkan', age: 25 });
 //     console.log(result);
 // }); 
 
-person.save()
-    .then(res => {
-        console.log(res)
+// person.save()
+//     .then(res => {
+//         console.log(res)
+//     });
+
+
+Person.find({})
+    .then(data => {
+        data.forEach(x => {
+            console.log(`I'm born ${x.birthYear}`);
+        });
     });
 
+
+Person.updateOne({_id: "6037b4e0a653ee2bcc0ed7ee"}, {$set: {name: 'Peter'}})
+    .then(res => console.log(res));
